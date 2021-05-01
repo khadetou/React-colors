@@ -2,25 +2,26 @@ import React, {useState} from 'react';
 import CopyToClipBoard from 'react-copy-to-clipboard';
 import '../style/ColorBox.css';
 
-const ColorBox = ({colorName}) => {
+const ColorBox = ({colorName, format}) => {
 
     const [copied, setCopied] = useState(false);
 
     const changeCopyState = ()=>{
         setCopied(true, setTimeout(()=> setCopied(false), 1500));
     }
-
-    const {hex, name} = colorName;
+    
+    const {name} = colorName;
+   
     return (
-        <CopyToClipBoard text ={hex} onCopy={changeCopyState}>
-            <div style={{backgroundColor:hex}} className="ColorBox"> 
+        <CopyToClipBoard text ={colorName[format]} onCopy={changeCopyState}>
+            <div style={{backgroundColor:colorName[format]}} className="ColorBox"> 
 
-                <div className={`copy-overlay ${copied && "show"}`} style={{backgroundColor:hex}}>
+                <div className={`copy-overlay ${copied && "show"}`} style={{backgroundColor:colorName[format]}}>
                 </div>
 
                 <div className={`copy-msg ${copied && "show"}`}>
                         <h1>Copied</h1>
-                        <p>{hex}</p>
+                        <p>{colorName[format]}</p>
                 </div> 
 
                 <div className="copy-container">
