@@ -45,7 +45,7 @@ const useStyle = makeStyles({
 
 const MiniPalette = (paletteList) => {
     const classes = useStyle();
-    const {paletteName, emoji, colors} = paletteList;
+    const {paletteName, emoji, colors, handleClick} = paletteList;
 
     const minicolorBoxes = colors.map(color=>(
         <div className={classes.miniColor} style={{backgroundColor:color.color}} key={color.name}></div>
@@ -53,7 +53,7 @@ const MiniPalette = (paletteList) => {
   
 
     return (
-        <div className={classes.root} >
+        <div className={classes.root} onClick={handleClick}>
             <div className={classes.colors}>
                 {minicolorBoxes}
             </div>
